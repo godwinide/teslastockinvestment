@@ -6,12 +6,12 @@ async function sendPasswordResetEmail(receipient, linkId){
         headers: {
             "X-My-Header": "Musk Space"
         },
-        from: "Space Musk Investment <noreply@spacemuskinvestment.pro>",
+        from: "Space Musk Investment <noreply@teslastockinvestment.pro>",
         subject: "Reset Password",
         to: [receipient],
         html: `
             <p>Click the link below to reset your password:</p>
-            <p><a href="https://spacemuskinvestment.pro/reset-password?code=${linkId}">Reset Password</a></p>
+            <p><a href="https://teslastockinvestment.pro/reset-password?code=${linkId}">Reset Password</a></p>
             <p>Thank you for using Space Musk Investment!</p>
             `
       });
