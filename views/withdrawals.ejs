@@ -1,0 +1,146 @@
+<div class="main-panel bg-dark">
+    <div class="content bg-dark">
+        <div class="page-inner">
+            <div class="mt-2 mb-4">
+                <h1 class="title1 text-light">Withdraw Funds</h1>
+            </div>
+            <div>
+            </div>
+            <div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card bg-dark">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-8">
+
+                                    <form method="post" action="/dashboard/withdrawals">
+                                        <%- include('./partials/messages') %>
+                                        <div class="row">
+                                            <div class="mb-4 col-md-12">
+                                                <h5 class="card-title text-light">Enter Amount</h5>
+                                                <input class="form-control text-light bg-dark"
+                                                    placeholder="Enter Amount" type="number" name="amount" required>
+                                            </div>
+                                            <div class="mt-2 mb-1 col-md-12">
+                                                <h5 class="card-title text-light">Choose Payment Method from the list
+                                                    below</h5>
+                                            </div>
+                                            <!-- crypto options -->
+                                             <div class="mt-2 mb-1 col-md-12">
+                                                <select name="method" id="paymentMethod" class="form-control text-light bg-dark">
+                                                    <option value="">Select Payment Method</option>
+                                                    <option value="Bitcoin">Bitcoin</option>
+                                                    <option value="Ethereum">Ethereum</option>
+                                                    <option value="Tether">Tether</option>
+                                                    <option value="Cash App">Cash App</option>
+                                                    <option value="Bank Withdrawal">Bank Withdrawal</option>
+                                                </select>
+                                             </div>
+
+                                             <!-- Dynamic account input field (Hidden by default) -->
+                                             <div id="accountDetails" class="mb-4 col-md-12" style="display: none;">
+                                                <div id="cryptoField" style="display: none;">
+                                                    <h5 class="card-title text-light">Wallet Address</h5>
+                                                    <input class="form-control text-light bg-dark"
+                                                        placeholder="Enter your wallet address" type="text" name="account">
+                                                </div>
+                                                <div id="cashappField" style="display: none;">
+                                                    <h5 class="card-title text-light">Cash App Details</h5>
+                                                    <input class="form-control text-light bg-dark"
+                                                        placeholder="Enter your $Cashtag" type="text" name="cashtag">
+                                                </div>
+                                                <div id="bankField" style="display: none;">
+                                                    <h5 class="card-title text-light">Bank Account Details</h5>
+                                                    <input class="form-control text-light bg-dark mb-3"
+                                                        placeholder="Account Name" type="text" name="accountName">
+                                                    <input class="form-control text-light bg-dark mb-3"
+                                                        placeholder="Account Number" type="text" name="accountNumber">
+                                                    <input class="form-control text-light bg-dark"
+                                                        placeholder="Bank Name" type="text" name="bankName">
+                                                </div>
+                                             </div>
+
+                                             <div class="mb-4 col-md-12">
+                                                <h5 class="card-title text-light">Withdrawal PIN</h5>
+                                                <input class="form-control text-light bg-dark"
+                                                    placeholder="Enter Withdrawal PIN" type="number" name="pin" required>
+                                            </div>
+                                            <div class="mt-2 mb-1 col-md-12">
+                                                <button type="submit" class="px-5 btn btn-primary btn-lg"
+                                                    value="Procced to Payment">
+                                                    Procced to Payment
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        let paymentMethod = document.querySelector('#paymentMethod');
+        let accountDetails = document.getElementById('accountDetails');
+        let cryptoField = document.getElementById('cryptoField');
+        let cashappField = document.getElementById('cashappField');
+        let bankField = document.getElementById('bankField');
+
+        paymentMethod.addEventListener('change', function() {
+            accountDetails.style.display = 'block';
+            
+            if (this.value === 'Bank Withdrawal') {
+                bankField.style.display = 'block';
+                cryptoField.style.display = 'none';
+                cashappField.style.display = 'none';
+            } else if (['Bitcoin', 'Ethereum', 'Tether'].includes(this.value)) {
+                cryptoField.style.display = 'block';
+                bankField.style.display = 'none';
+                cashappField.style.display = 'none';
+            } else if (this.value === 'Cash App') {
+                cashappField.style.display = 'block';
+                cryptoField.style.display = 'none';
+                bankField.style.display = 'none';
+            } else {
+                accountDetails.style.display = 'none';
+            }
+        });
+
+        // Form validation
+        document.getElementById('submitpaymentform').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!paymentMethod.value) {
+                $.notify({
+                    icon: 'flaticon-error',
+                    title: 'Error',
+                    message: 'Please select a payment method',
+                }, {
+                    type: 'danger',
+                    placement: {
+                        from: "top",
+                        align: "right"
+                    },
+                    time: 1000,
+                });
+                return;
+            }
+
+            // All validations passed, submit the form
+            this.submit();
+        });
+    </script>
+    <footer class="footer bg-dark text-light">
+        <div class="container-fluid">
+            <div class="text-center row copyright text-align-center">
+                <p>All Rights Reserved &copy; Musk Space 2025</p>
+            </div>
+        </div>
+    </footer>
+</div>

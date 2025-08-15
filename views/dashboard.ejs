@@ -1,0 +1,251 @@
+<!-- End Sidebar -->
+<div class="main-panel bg-dark">
+    <div class="content bg-dark">
+        <div class="page-inner">
+            <div class="mt-2 mb-4">
+                <%- include('./partials/messages') %>
+                <h2 class="text-light pb-2">Welcome, <%= user.fullname %>!</h2>
+                <h5 id="ann" class="text-lightop-7 mb-4">Welcome to Tesla Stock Investment</h5>
+            </div>
+            <div>
+            </div>
+            <div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="p-3 card bg-dark shadow">
+                        <div class="d-flex align-items-center">
+                            <span class="mr-3 stamp stamp-md bg-secondary">
+                                <i class="fa fa-dollar-sign"></i>
+                            </span>
+                            <div>
+                                <h5 class="mb-1 text-light"><b><%= user.currency %><%= user.balance.toLocaleString() %></b></h5>
+                                <small class="text-muted">Account Balance</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="p-3 card bg-dark shadow">
+                        <div class="d-flex align-items-center">
+                            <span class="mr-3 stamp stamp-md bg-success">
+                                <i class="fa fa-coins"></i>
+                            </span>
+                            <div>
+                                <h5 class="mb-1 text-light"><b><%= user.currency %><%= user.totalProfit.toLocaleString() %></b></h5>
+                                <small class="text-muted text-light">Total Profit</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="p-3 card bg-dark shadow">
+                        <div class="d-flex align-items-center">
+                            <span class="mr-3 stamp stamp-md bg-secondary">
+                                <i class="fa fa-gift"></i>
+                            </span>
+                            <div>
+                                <h5 class="mb-1 text-light"><b><%= user.currency %><%= user.totalBonus.toLocaleString() %></b></h5>
+                                <small class="text-muted text-light">Total Bonus</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="p-3 card bg-dark shadow">
+                        <div class="d-flex align-items-center">
+                            <span class="mr-3 stamp stamp-md bg-info">
+                                <i class="fa fa-retweet"></i>
+                            </span>
+                            <div>
+                                <h5 class="mb-1 text-light"><b><%= user.currency %><%= user.totalReferralBonus.toLocaleString() %></b></h5>
+                                <small class="text-muted text-light">Total Referral Bonus</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="p-3 card bg-dark shadow">
+                        <div class="d-flex align-items-center">
+                            <span class="mr-3 stamp stamp-md bg-danger">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                            <div>
+                                <h5 class="mb-1 text-light"><b><%= user.totalInvestmentPlans %></b></h5>
+                                <small class="text-muted text-light">Total Investment Plans</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="p-3 card bg-dark shadow">
+                        <div class="d-flex align-items-center">
+                            <span class="mr-3 stamp stamp-md bg-success">
+                                <i class="fa fa-envelope-open"></i>
+                            </span>
+                            <div>
+                                <h5 class="mb-1 text-light"><b><%= user.totalActiveInvestmentPlans %></b></h5>
+                                <small class="text-muted text-light">Total Active Investment Plans</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="p-3 card bg-dark shadow">
+                        <div class="d-flex align-items-center">
+                            <span class="mr-3 stamp stamp-md bg-warning">
+                                <i class="fa fa-download"></i>
+                            </span>
+                            <div>
+                                <h5 class="mb-1 text-light"><%= user.currency %><%= user.totalDeposit.toLocaleString() %></h5>
+
+                                <small class="text-muted text-light">Total Deposit</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="p-3 card bg-dark shadow">
+                        <div class="d-flex align-items-center">
+                            <span class="mr-3 stamp stamp-md bg-danger">
+                                <i class="fa fa-arrow-alt-circle-up"></i>
+                            </span>
+                            <div>
+                                <h5 class="mb-1 text-light"><%= user.currency %><%= user.totalWithdrawals.toLocaleString() %></h5>
+
+                                <small class="text-muted text-light">Total Withdrawals</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="pt-1 col-12">
+                    <h3>Personal Trading Chart</h3>
+                    <div class="tradingview-widget-container" style="margin:30px 0px 10px 0px;">
+                        <div id="tradingview_f933e"></div>
+                        <div class="tradingview-widget-copyright"><a href="#" rel="noopener" target="_blank"><span
+                                    class="blue-text"></span> <span class="blue-text">Personal trading chart</span></a>
+                        </div>
+                        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                        <script type="text/javascript">
+                            new TradingView.widget(
+                                {
+                                    "width": "100%",
+                                    "height": "550",
+                                    "symbol": "COINBASE:BTCUSD",
+                                    "interval": "1",
+                                    "timezone": "Etc/UTC",
+                                    "theme": 'dark',
+                                    "style": "9",
+                                    "locale": "en",
+                                    "toolbar_bg": "#f1f3f6",
+                                    "enable_publishing": false,
+                                    "hide_side_toolbar": false,
+                                    "allow_symbol_change": true,
+                                    "calendar": false,
+                                    "studies": [
+                                        "BB@tv-basicstudies"
+                                    ],
+                                    "container_id": "tradingview_f933e"
+                                }
+                            );
+                        </script>
+                    </div>
+
+                </div>
+
+
+
+                <div class="white-box" style="height: 450px; width:100%">
+                    <h4 style="margin-bottom:5px;"> Forex Market Fundamental Data</h4>
+                    <!-- TradingView Widget BEGIN -->
+
+                    <span id="tradingview-copyright"><a ref="nofollow noopener" target="_blank"
+                            href="http://www.tradingview.com"
+                            style="color: rgb(173, 174, 176); font-family: &quot;Trebuchet MS&quot;, Tahoma, Arial, sans-serif; font-size: 13px;"></a></span>
+                    <script src="https://s3.tradingview.com/external-embedding/embed-widget-forex-cross-rates.js">{
+                            "currencies": [
+                                "EUR",
+                                "USD",
+                                "JPY",
+                                "BTC",
+                                "ETH",
+                                "LTC",
+                                "GBP",
+                                "CHF",
+                                "AUD",
+                                "CAD",
+                                "NZD",
+                                "CNY"
+                            ],
+                                "isTransparent": false,
+                                    "colorTheme": "dark",
+                                        "width": "100%",
+                                            "height": "100%",
+                                                "locale": "en"
+                        }</script>
+
+                </div>
+            </div>
+        </div>
+        <!-- end of chart -->
+    </div>
+    <style>
+        /* Dark theme adjustments for user dashboard */
+        .main-panel, .content-wrapper {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        h1, h4, .card-title {
+            color: #ffffff;
+        }
+        .card {
+            background-color: #1e1e1e;
+            border: 1px solid #2a2a2a;
+        }
+        .table, .table td, .table th {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            border-color: #2a2a2a;
+        }
+        .table-hover tbody tr:hover {
+            background-color: #2a2a2a;
+        }
+        .btn-primary {
+            background-color: #1976d2;
+            border-color: #1976d2;
+        }
+        .btn-primary:hover {
+            background-color: #1565c0;
+            border-color: #1565c0;
+        }
+        .btn-success {
+            background-color: #388e3c;
+            border-color: #388e3c;
+        }
+        .btn-success:hover {
+            background-color: #2e7d32;
+            border-color: #2e7d32;
+        }
+        .text-white, .text-muted, p {
+            color: #e0e0e0 !important;
+        }
+        .alert-warning {
+            background-color: #ffa000;
+            color: #212121;
+        }
+        .alert-success {
+            background-color: #388e3c;
+            color: #ffffff;
+        }
+    </style>
+    <footer class="footer bg-dark text-light">
+        <div class="container-fluid">
+            <div class="text-center row copyright text-align-center">
+                <p>All Rights Reserved &copy; Musk Space 2025</p>
+            </div>
+        </div>
+    </footer>
+</div>

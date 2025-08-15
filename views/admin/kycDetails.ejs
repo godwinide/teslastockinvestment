@@ -1,0 +1,151 @@
+<div class="main-panel">
+  <div class="content-wrapper">
+    <h1 class="text-center">KYC Details for <%= user.fullname %></h1>
+    <div class="row">
+      <div class="col-12 grid-margin">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">User Information</h4>
+            <div class="table-responsive">
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <td class="text-white"><strong>Full Name</strong></td>
+                    <td class="text-white"><%= user.fullname %></td>
+                  </tr>
+                  <tr>
+                    <td class="text-white"><strong>Email</strong></td>
+                    <td class="text-white"><%= user.email %></td>
+                  </tr>
+                  <tr>
+                    <td class="text-white"><strong>Submission Date</strong></td>
+                    <td class="text-white"><%= user.kycSubmissionDate ? new Date(user.kycSubmissionDate).toLocaleDateString() : 'N/A' %></td>
+                  </tr>
+                  <tr>
+                    <td class="text-white"><strong>KYC Status</strong></td>
+                    <td class="text-white"><%= user.kycVerified ? 'Verified' : user.kycSubmitted ? 'Pending' : 'Not Submitted' %></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-12 grid-margin">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Uploaded Documents</h4>
+            <div class="row">
+              <% if(user.kycDocuments.idProof) { %>
+              <div class="col-md-4">
+                <h5 class="text-white">ID Proof</h5>
+                <div class="document-preview">
+                  <% if(user.kycDocuments.idProof.endsWith('.pdf')) { %>
+                    <p class="text-white">PDF Document: <a href="<%= user.kycDocuments.idProof.replace('/kyc', '') %>" target="_blank" class="text-primary">View PDF</a></p>
+                  <% } else { %>
+                    <img src="<%= user.kycDocuments.idProof.replace('/kyc', '') %>" alt="ID Proof" class="img-fluid" style="max-height: 300px;">
+                  <% } %>
+                </div>
+              </div>
+              <% } %>
+              
+              <% if(user.kycDocuments.addressProof) { %>
+              <div class="col-md-4">
+                <h5 class="text-white">Address Proof</h5>
+                <div class="document-preview">
+                  <% if(user.kycDocuments.addressProof.endsWith('.pdf')) { %>
+                    <p class="text-white">PDF Document: <a href="<%= user.kycDocuments.addressProof.replace('/kyc', '') %>" target="_blank" class="text-primary">View PDF</a></p>
+                  <% } else { %>
+                    <img src="<%= user.kycDocuments.addressProof.replace('/kyc', '') %>" alt="Address Proof" class="img-fluid" style="max-height: 300px;">
+                  <% } %>
+                </div>
+              </div>
+              <% } %>
+              
+              <% if(user.kycDocuments.selfie) { %>
+              <div class="col-md-4">
+                <h5 class="text-white">Selfie with ID</h5>
+                <div class="document-preview">
+                  <img src="<%= user.kycDocuments.selfie.replace('/kyc', '') %>" alt="Selfie with ID" class="img-fluid" style="max-height: 300px;">
+                </div>
+              </div>
+              <% } %>
+              
+              <% if(!user.kycDocuments.idProof && !user.kycDocuments.addressProof && !user.kycDocuments.selfie) { %>
+              <div class="col-12">
+                <p class="text-white">No documents uploaded.</p>
+              </div>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <% if(user.kycSubmitted && !user.kycVerified) { %>
+    <div class="row">
+      <div class="col-12 grid-margin text-center">
+        <a href="/admin/approve-kyc/<%=user._id%>" class="btn btn-success mr-2">Accept KYC</a>
+        <a href="/admin/reject-kyc/<%=user._id%>" class="btn btn-danger">Reject KYC</a>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>
+
+<script
+  src="https://code.jquery.com/jquery-3.7.1.min.js"
+  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+  crossorigin="anonymous"
+></script>
+<style>
+  /* Dark theme adjustments for KYC details page */
+  .main-panel, .content-wrapper {
+    background-color: #121212;
+    color: #e0e0e0;
+  }
+  h1, h4, .card-title, h5 {
+    color: #ffffff;
+  }
+  .card {
+    background-color: #1e1e1e;
+    border: 1px solid #2a2a2a;
+  }
+  .table, .table td, .table th {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border-color: #2a2a2a;
+  }
+  .document-preview {
+    border: 1px solid #2a2a2a;
+    background-color: #1e1e1e;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+  .btn-success {
+    background-color: #388e3c;
+    border-color: #388e3c;
+  }
+  .btn-success:hover {
+    background-color: #2e7d32;
+    border-color: #2e7d32;
+  }
+  .btn-danger {
+    background-color: #d32f2f;
+    border-color: #d32f2f;
+  }
+  .btn-danger:hover {
+    background-color: #b71c1c;
+    border-color: #b71c1c;
+  }
+  .text-white, p, a {
+    color: #e0e0e0 !important;
+  }
+  a:hover {
+    color: #ffffff !important;
+  }
+</style>

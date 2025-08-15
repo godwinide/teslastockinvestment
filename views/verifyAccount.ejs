@@ -1,0 +1,80 @@
+<div class="main-panel bg-dark">
+    <div class="content bg-dark">
+        <div class="page-inner">
+            <div class="mt-2 mb-4">
+                <%- include('./partials/messages') %>
+                <h1 class="title1 text-light">KYC Verification</h1>
+            </div>
+            <div>
+            </div>
+            <div>
+            </div>
+            <div class="mb-5 row">
+                <div class="col card shadow-lg bg-dark p-4">
+                    <% if(user.kycVerified) { %>
+                        <div class="alert alert-success text-center" role="alert">
+                            <h4 class="alert-heading text-dark">KYC Verified!</h4>
+                            <p class="text-dark">Your KYC documents have been verified. Thank you for completing the verification process.</p>
+                        </div>
+                    <% } else if(user.kycSubmitted) { %>
+                        <div class="alert alert-warning text-center" role="alert">
+                            <h4 class="alert-heading text-dark">KYC Under Review</h4>
+                            <p class="text-dark">Your KYC documents have been submitted on <%= user.kycSubmissionDate.toLocaleDateString() %> and are currently under review. We will notify you once the verification is complete.</p>
+                        </div>
+                    <% } else { %>
+                        <div class="alert alert-info text-center" role="alert">
+                            <h4 class="alert-heading text-light">Complete Your KYC Verification</h4>
+                            <p class="text-dark font-weight-bold">Please upload the required documents to verify your identity and activate full account features.</p>
+                        </div>
+                        <form action="/dashboard/submit-kyc" method="POST" enctype="multipart/form-data" class="mt-4">
+                            <div class="form-group mb-4">
+                                <label class="text-light">Government Issued ID (Passport, Driver's License, National ID)</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="idProof" name="idProof" accept="image/*,application/pdf" required>
+                                    <label class="custom-file-label bg-dark text-light" for="idProof">Choose file...</label>
+                                </div>
+                                <small class="form-text text-muted">Accepted formats: JPG, PNG, PDF. Max size: 5MB</small>
+                            </div>
+                            
+                            <div class="form-group mb-4">
+                                <label class="text-light">Proof of Address (Utility Bill, Bank Statement - less than 3 months old)</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="addressProof" name="addressProof" accept="image/*,application/pdf" required>
+                                    <label class="custom-file-label bg-dark text-light" for="addressProof">Choose file...</label>
+                                </div>
+                                <small class="form-text text-muted">Accepted formats: JPG, PNG, PDF. Max size: 5MB</small>
+                            </div>
+                            
+                            <div class="form-group mb-4">
+                                <label class="text-light">Selfie with ID (Hold your ID next to your face)</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="selfie" name="selfie" accept="image/*" required>
+                                    <label class="custom-file-label bg-dark text-light" for="selfie">Choose file...</label>
+                                </div>
+                                <small class="form-text text-muted">Accepted formats: JPG, PNG. Max size: 5MB</small>
+                            </div>
+                            
+                            <input type="hidden" name="_token" value="<%= csrfToken %>">
+                            <button type="submit" class="btn btn-primary btn-block">Submit Documents for Verification</button>
+                        </form>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer bg-dark text-light">
+        <div class="container-fluid">
+            <div class="text-center row copyright text-align-center">
+                <p>All Rights Reserved &copy; Tesla Stock Investment 2025</p>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    // Update file input labels with selected file name
+    $('.custom-file-input').on('change', function() {
+        let fileName = $(this).val().split('\\').pop();
+        $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    });
+</script>

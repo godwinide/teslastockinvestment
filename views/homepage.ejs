@@ -1,0 +1,690 @@
+<!-- Hero Start -->
+<section class="bg-half-170 d-table w-100 position-relative bg-dark" style="background: url('/elon1.png') right center no-repeat; background-size: auto 100%;">
+    <style>
+        .bg-half-170 {
+            height: 100vh;
+            max-height: 700px;
+        }
+        @media (max-width: 768px) {
+            .bg-overlay {
+                display: none;
+            }
+            .bg-half-170 {
+                background-size: cover !important;
+                background-position: center !important;
+            }
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #fff;
+            margin-left: 0.1rem;
+            animation: blink 1s infinite;
+        }
+        .cursor.typing {
+            animation: none;
+        }
+        @keyframes blink {
+            0%  { background-color: #fff; }
+            49% { background-color: #fff; }
+            50% { background-color: transparent; }
+            99% { background-color: transparent; }
+            100%  { background-color: #fff; }
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .hero-cta {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+        }
+        .title-heading {
+            margin-top: 6rem !important;
+        }
+    </style>
+    <div class="bg-overlay" style="background: linear-gradient(to right, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.9) 40%, transparent 50%);"></div>
+    <div class="container position-relative">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-7">
+                <div class="mt-4 title-heading">
+                    <div class="hero-badge">
+                        <span class="content text-white">🚀 Trade • Invest • Grow</span>
+                    </div>
+                    <h1 class="hero-title text-white">The Better Way to<br><span class="typed-text"></span><span class="cursor">&nbsp;</span></h1>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const typedTextSpan = document.querySelector('.typed-text');
+                            const cursorSpan = document.querySelector('.cursor');
+
+                            const textArray = ['Trade & Invest', 'Grow Your Wealth', 'Secure Your Future', 'Build Your Portfolio'];
+                            const typingDelay = 100;
+                            const erasingDelay = 50;
+                            const newTextDelay = 2000;
+                            let textArrayIndex = 0;
+                            let charIndex = 0;
+
+                            function type() {
+                                if (charIndex < textArray[textArrayIndex].length) {
+                                    if(!cursorSpan.classList.contains('typing')) cursorSpan.classList.add('typing');
+                                    typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+                                    charIndex++;
+                                    setTimeout(type, typingDelay);
+                                } else {
+                                    cursorSpan.classList.remove('typing');
+                                    setTimeout(erase, newTextDelay);
+                                }
+                            }
+
+                            function erase() {
+                                if (charIndex > 0) {
+                                    if(!cursorSpan.classList.contains('typing')) cursorSpan.classList.add('typing');
+                                    typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
+                                    charIndex--;
+                                    setTimeout(erase, erasingDelay);
+                                } else {
+                                    cursorSpan.classList.remove('typing');
+                                    textArrayIndex++;
+                                    if(textArrayIndex >= textArray.length) textArrayIndex = 0;
+                                    setTimeout(type, typingDelay + 1100);
+                                }
+                            }
+
+                            if(textArray.length) setTimeout(type, newTextDelay + 250);
+                        });
+                    </script>
+                    <p class="hero-subtitle text-white">Tesla Stock Investment helps over 2 million customers achieve their financial
+                        goals by helping them trade and invest with ease</p>
+                    <div class="mt-5">
+                        <a href="/register" class="hero-cta btn btn-light">Start Trading Now</a>
+                    </div>
+                </div>
+            </div>
+            <!--end col-->
+
+
+        </div>
+        <!--end row-->
+    </div>
+    <!--end container-->
+</section>
+<!--end section-->
+<!-- Hero End -->
+
+<!-- TradingView Widget BEGIN -->
+<div
+    style="height:62px; background-color: #FFFFFF; overflow:hidden; box-sizing: border-box; border: 1px solid #FFFFFF; border-radius: 4px; text-align: right; line-height:14px; block-size:62px; font-size: 12px; font-feature-settings: normal; text-size-adjust: 100%; padding:1px;padding: 0px; margin: 0px; width: 100%;">
+    <div style="height:40px; padding:0px; margin:0px; width: 100%;"><iframe
+            src="https://widget.coinlib.io/widget?type=horizontal_v2&theme=light&pref_coin_id=1505&invert_hover="
+            width="100%" height="36px" scrolling="auto" marginwidth="0" marginheight="0" frameborder="0" border="0"
+            style="border:0;margin:0;padding:0;"></iframe></div>
+    <div
+        style="color: #FFFFFF; line-height: 14px; font-weight: 400; font-size: 11px; box-sizing: border-box; padding: 2px 6px; width: 100%; font-family: Verdana, Tahoma, Arial, sans-serif;">
+    </div>
+</div>
+<!-- TradingView Widget END -->
+
+<!-- Security Section Start -->
+<section class="overflow-hidden section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="text-center col-12">
+                <div class="pb-2 mb-4 section-title">
+
+                    <h4 class="mb-4 title">Security Comes First</h4>
+
+                </div>
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+
+        <div class="row">
+            <div class="pt-2 mt-4 col-md-6 col-12">
+                <div class="text-center border-0 rounded card">
+                    <div class="card-body">
+                        <div class="p-3 shadow bg-soft-primary roundedd d-inline-block">
+                            <img src="/temp/images/icon/key.svg" class="avatar avatar-small"
+                                alt="">
+                        </div>
+                        <div class="mt-4">
+                            <h5><a href="javascript:void(0)" class="text-dark">Security</a></h5>
+                            <p class="mt-3 mb-0 text-muted">Space Musk Investment uses the highest levels of Internet Security,
+                                and it is secured by 256 bits SSL security encryption to ensure that your information is
+                                completely protected from fraud.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end col-->
+
+
+
+            <div class="pt-2 mt-4 col-md-6 col-12">
+                <div class="text-center border-0 rounded card">
+                    <div class="card-body">
+                        <div class="p-3 shadow bg-soft-primary roundedd d-inline-block">
+                            <img src="/temp/images/icon/locked.svg"
+                                class="avatar avatar-small" alt="">
+                        </div>
+                        <div class="mt-4">
+                            <h5><a href="javascript:void(0)" class="text-dark">Two Factor Auth</a></h5>
+                            <p class="mt-3 mb-0 text-muted">Two-factor authentication (2FA) by default on all Online
+                                Trade accounts, to securely protect you from unauthorised access and impersonation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+    </div>
+    <!--end container-->
+</section>
+
+<!-- End Security Section Start -->
+
+<!-- Features Section Start -->
+<section class="overflow-hidden section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="text-center col-lg-7 col-md-7">
+                <div class="pb-2 mb-4 section-title">
+
+                    <h4 class="mb-4 title "> Explore Our Services</h4>
+                    <p class="mx-auto mb-0 text-muted para-desc">It’s our mission to provide you with a delightful and a
+                        successful trading experience!</p>
+                </div>
+            </div>
+            <!--end col-->
+
+        </div>
+        <!--end row-->
+
+
+        <!--end col-->
+
+        <div class="row justify-content-center align-items-center">
+            <div class="col-lg-8 col-md-8">
+                <div class="pt-2 mt-4 row">
+                    <div class="col-md-6 col-12">
+                        <div class="pt-4 pb-4 media features">
+                            <div class="mt-2 mr-3 text-center icon rounded-circle text-primary">
+                                <i data-feather="activity" class="fea icon-ex-md text-primary"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="title"> Powerful Trading Platforms</h4>
+                                <p class="mb-0 text-muted para">Space Musk Investment offers multiple platform options to cover
+                                    the needs of each type of trader and investors .</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end col-->
+
+                    <div class="col-md-6 col-12">
+                        <div class="pt-4 pb-4 media features">
+                            <div class="mt-2 mr-3 text-center icon rounded-circle text-primary">
+                                <i data-feather="credit-card" class="fea icon-ex-md text-primary"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="title">High leverage</h4>
+                                <p class="mb-0 text-muted para">Chance to magnify your investment and really win big
+                                    with super-low spreads to further up your profits</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end col-->
+
+                    <div class="col-md-6 col-12">
+                        <div class="pt-4 pb-4 media features">
+                            <div class="mt-2 mr-3 text-center icon rounded-circle text-primary">
+                                <i data-feather="zap" class="fea icon-ex-md text-primary"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="title">Fast execution</h4>
+                                <p class="mb-0 text-muted para">Super-fast trading software, so you never suffer
+                                    slippage.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end col-->
+
+                    <div class="col-md-6 col-12">
+                        <div class="pt-4 pb-4 media features">
+                            <div class="mt-2 mr-3 text-center icon rounded-circle text-primary">
+                                <i data-feather="shield" class="fea icon-ex-md text-primary"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="title">Ultimate Security</h4>
+                                <p class="mb-0 text-muted para">With advanced security systems, we keep your account
+                                    always protected.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end col-->
+
+                    <div class="col-md-6 col-12">
+                        <div class="pt-4 pb-4 media features">
+                            <div class="mt-2 mr-3 text-center icon rounded-circle text-primary">
+                                <i data-feather="message-circle" class="fea icon-ex-md text-primary"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="title">24/7 live chat Support</h4>
+                                <p class="mb-0 text-muted para">Connect with our 24/7 support and Market Analyst
+                                    on-demand.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end col-->
+
+
+                </div>
+                <!--end row-->
+            </div>
+            <!--end col-->
+
+            <div class="pt-2 mt-4 text-center col-lg-4 col-md-4 col-12 text-md-right">
+                <img src="/temp/images/app/phone.png" class="img-fluid" alt="">
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+    </div>
+    <!--end row-->
+    </div>
+    <!--end container-->
+</section>
+<!-- End Features Section Start -->
+
+
+<!-- INv Section Start -->
+<section class="overflow-hidden section bg-soft-primary">
+    <div class="container mt-100 mt-60 ">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6">
+                <img src="/temp/images/app/laptop.png" class="img-fluid " alt="">
+            </div>
+            <!--end col-->
+
+            <div class="pt-2 mt-4 col-lg-6 col-md-6 mt-sm-0 pt-sm-0">
+                <div class="section-title ml-lg-5">
+                    <h4 class="mb-4 title">Always on the go? Mobile trading is easier than ever with Space Musk Investment
+                    </h4>
+                    <p class="text-muted">Get Access to your account anywhere you are in the world whether you&#039;re
+                        using your computer or a mobile phone, you are always on the Go!</p>
+
+                    <a href="/about" class="mt-3 h6 text-primary">Find Out More <i
+                            class="mdi mdi-chevron-right"></i></a>
+                </div>
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+    </div>
+    <!--end container-->
+</section>
+<!-- INv Section Start -->
+
+
+<!-- Pricing Section Start -->
+<section class="mt-4 overflow-hidden section" id="pricing">
+    <div class="container mt-100 mt-60">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="pb-2 mb-4 text-center section-title">
+                    <h4 class="mb-4 title"><span class="text-primary">Our Investment Packages</span></h4>
+                    <p class="mx-auto mb-0 para-desc text-muted">Choose how you want to invest with us</p>
+                </div>
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+
+        <div class="row">
+
+            <div class="pt-2 mt-4 col-lg-4 col-md-6">
+                <div class="p-4 border-0 rounded-md shadow card pricing-rates business-rate">
+                    <div class="p-0 card-body">
+                        <span class="px-4 py-2 mb-0 rounded-lg d-inline-block bg-soft-primary h6 text-primary">Silver
+                            plan</span>
+                        <h2 class="mt-3 mb-0 font-weight-bold">$ 5000
+                        </h2>
+                        <p class="text-muted">7Hours</p>
+
+
+
+                        <ul class="pt-3 list-unstyled border-top">
+                            <li class="mb-0 h6 text-muted"><span class="mr-2 text-primary h5"><i
+                                        class="align-middle uil uil-check-circle"></i></span>Min. Possible
+                                deposit:
+                                $4500</li>
+                            <li class="mb-0 h6 text-muted"><span class="mr-2 text-primary h5"><i
+                                        class="align-middle uil uil-check-circle"></i></span>Max. Possible
+                                deposit:
+                                $5000</li>
+                            <li class="mb-0 h6 text-muted"><span class="mr-2 text-primary h5"><i
+                                        class="align-middle uil uil-check-circle"></i></span>$35,000.00
+                                Minimum return</li>
+                            <li class="mb-0 h6 text-muted"><span class="mr-2 text-primary h5"><i
+                                        class="align-middle uil uil-check-circle"></i></span>$35,000.00
+                                Maximum return</li>
+                            <li class="mb-0 h6 text-muted"><span class="mr-2 text-primary h5"><i
+                                        class="align-middle uil uil-check-circle"></i></span>$1000
+                                Gift Bonus</li>
+                        </ul>
+
+                        <div class="mt-4">
+                            <a href="login" class="btn btn-block btn-primary">Buy Now</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end col-->
+            <div class="pt-2 mt-4 col-lg-4 col-md-6">
+                <div class="p-4 border-0 rounded-md shadow card pricing-rates business-rate">
+                    <div class="p-0 card-body">
+                        <span class="px-4 py-2 mb-0 rounded-lg d-inline-block bg-soft-primary h6 text-primary">Gold
+                            plan</span>
+                        <h2 class="mt-3 mb-0 font-weight-bold">$ 2,000
+                        </h2>
+                        <p class="text-muted">5hours</p>
+
+
+
+                        <ul class="pt-3 list-unstyled border-top">
+                            <li class="mb-0 h6 text-muted"><span class="mr-2 text-primary h5"><i
+                                        class="align-middle uil uil-check-circle"></i></span>Min. Possible
+                                deposit:
+                                $1,500</li>
+                            <li class="mb-0 h6 text-muted"><span class="mr-2 text-primary h5"><i
+                                        class="align-middle uil uil-check-circle"></i></span>Max. Possible
+                                deposit:
+                                $2,000</li>
+                            <li class="mb-0 h6 text-muted"><span class="mr-2 text-primary h5"><i
+                                        class="align-middle uil uil-check-circle"></i></span>$18,000.00
+                                Minimum return</li>
+                            <li class="mb-0 h6 text-muted"><span class="mr-2 text-primary h5"><i
+                                        class="align-middle uil uil-check-circle"></i></span>$35,000.00
+                                Maximum return</li>
+                            <li class="mb-0 h6 text-muted"><span class="mr-2 text-primary h5"><i
+                                        class="align-middle uil uil-check-circle"></i></span>$500
+                                Gift Bonus</li>
+                        </ul>
+
+                        <div class="mt-4">
+                            <a href="login" class="btn btn-block btn-primary">Buy Now</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end col-->
+            <div class="pt-2 mt-4 col-lg-4 col-md-6">
+                <div class="p-4 border-0 rounded-md shadow card pricing-rates business-rate">
+                    <div class="p-0 card-body">
+                        <span class="px-4 py-2 mb-0 rounded-lg d-inline-block bg-soft-primary h6 text-primary">Bronze
+                            plan</span>
+                        <h2 class="mt-3 mb-0 font-weight-bold">$ 8,000
+                        </h2>
+                        <p class="text-muted">1 Days</p>
+
+
+
+                        <ul class="pt-3 list-unstyled border-top">
+                            <li class="mb-0 h6 text-muted"><span class="mr-2 text-primary h5"><i
+                                        class="align-middle uil uil-check-circle"></i></span>Min. Possible
+                                deposit:
+                                $7,500</li>
+                            <li class="mb-0 h6 text-muted"><span class="mr-2 text-primary h5"><i
+                                        class="align-middle uil uil-check-circle"></i></span>Max. Possible
+                                deposit:
+                                $8,000</li>
+                            <li class="mb-0 h6 text-muted"><span class="mr-2 text-primary h5"><i
+                                        class="align-middle uil uil-check-circle"></i></span>$56,000.00
+                                Minimum return</li>
+                            <li class="mb-0 h6 text-muted"><span class="mr-2 text-primary h5"><i
+                                        class="align-middle uil uil-check-circle"></i></span>$56,000.00
+                                Maximum return</li>
+                            <li class="mb-0 h6 text-muted"><span class="mr-2 text-primary h5"><i
+                                        class="align-middle uil uil-check-circle"></i></span>$2,000
+                                Gift Bonus</li>
+                        </ul>
+
+                        <div class="mt-4">
+                            <a href="login" class="btn btn-block btn-primary">Buy Now</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end col-->
+            <div class="pt-2 mt-4 col-lg-4 col-md-6">
+                <div class="p-4 border-0 rounded-md shadow card pricing-rates business-rate">
+                    <div class="p-0 card-body">
+                        <span class="px-4 py-2 mb-0 rounded-lg d-inline-block bg-soft-primary h6 text-primary">Diamond
+                            plan</span>
+                        <h2 class="mt-3 mb-0 font-weight-bold">$ 10,000
+                        </h2>
+                        <p class="text-muted">2 Days</p>
+
+
+
+                        <ul class="pt-3 list-unstyled border-top">
+                            <li class="mb-0 h6 text-muted"><span class="mr-2 text-primary h5"><i
+                                        class="align-middle uil uil-check-circle"></i></span>Min. Possible
+                                deposit:
+                                $9,000</li>
+                            <li class="mb-0 h6 text-muted"><span class="mr-2 text-primary h5"><i
+                                        class="align-middle uil uil-check-circle"></i></span>Max. Possible
+                                deposit:
+                                $10,000</li>
+                            <li class="mb-0 h6 text-muted"><span class="mr-2 text-primary h5"><i
+                                        class="align-middle uil uil-check-circle"></i></span>$85,000.00
+                                Minimum return</li>
+                            <li class="mb-0 h6 text-muted"><span class="mr-2 text-primary h5"><i
+                                        class="align-middle uil uil-check-circle"></i></span>$90,000.00
+                                Maximum return</li>
+                            <li class="mb-0 h6 text-muted"><span class="mr-2 text-primary h5"><i
+                                        class="align-middle uil uil-check-circle"></i></span>$4,000
+                                Gift Bonus</li>
+                        </ul>
+
+                        <div class="mt-4">
+                            <a href="login" class="btn btn-block btn-primary">Buy Now</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end col-->
+
+
+            <!--end col-->
+        </div>
+        <!--end row-->
+    </div>
+    <!--end container-->
+</section>
+<!-- End Pricing Section Start -->
+
+
+<!-- Crypto price Section Start -->
+
+<section class="mt-5 overflow-hidden section bg-soft-primary">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="text-center col-12">
+                <div class="pb-2 mb-4 section-title">
+                    <h4 class="mb-4 title">Cryptocurrency</h4>
+                    <p class="mx-auto mb-0 text-muted para-desc">
+                        Trade and invest Top Cryptocurrency</p>
+                </div>
+            </div>
+            <!--end col-->
+        </div>
+
+        <div class="row align-items-center">
+            <div class="col-lg-4 col-md-6">
+                <div class="market-box ">
+                    <div class="market-content">
+                        <coingecko-coin-ticker-widget coin-id="bitcoin" currency="usd" width="0" locale="en"
+                            background-color="#01395e"></coingecko-coin-ticker-widget>
+                    </div>
+
+                    <!--pattern end-->
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="market-box">
+                    <div class="market-content">
+                        </script>
+                        <coingecko-coin-ticker-widget coin-id="ethereum" currency="usd" width="0" locale="en"
+                            background-color="#01395e"></coingecko-coin-ticker-widget>
+                    </div>
+                    <!--pattern start-->
+
+                    <!--pattern end-->
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="market-box">
+                    <div class="market-content">
+                        <coingecko-coin-ticker-widget coin-id="litecoin" currency="usd" width="0" locale="en"
+                            background-color="#01395e"></coingecko-coin-ticker-widget>
+                    </div>
+                    <!--pattern start-->
+
+                    <!--pattern end-->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Crypto price Section Start  End-->
+
+
+<!-- Testimonial Section Start -->
+<section class="mt-5 overflow-hidden section">
+    <div class="container mt-100 mt-60">
+        <div class="row justify-content-center">
+            <div class="text-center col-12">
+                <div class="pb-2 mb-4 section-title">
+                    <h4 class="mb-4 title">What our Customer says!</h4>
+                    <p class="mx-auto mb-0 text-muted para-desc">Don&#039;t take our word for it, here&#039;s what some
+                        of our clients have to say about us</p>
+                </div>
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+
+        <div class="mt-4 row justify-content-center">
+            <div class="col-lg-8 col-12">
+                <div id="single-owl" class="owl-carousel owl-theme">
+                    <!-- Review Start -->
+                    <div class="m-2 overflow-hidden border-0 card roundedd">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col-md-5">
+                                <img src="/storage/app/public/photos/upload-testimonial-1.jpg1617292794"
+                                    class="img-fluid w-75" alt="">
+                            </div>
+                            <!--end col-->
+
+                            <div class="col-md-7">
+                                <div class="card-body customer-testi">
+                                    <h6 class="text-primary font-weight-bold">Sarah Ona<small
+                                            class="text-muted d-block">Principal</small></h6>
+                                    <ul class="mb-0 list-unstyled">
+                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i>
+                                        </li>
+                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i>
+                                        </li>
+                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i>
+                                        </li>
+                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i>
+                                        </li>
+                                        <li class="list-inline-item"><i class="mdi mdi-star text-warning"></i>
+                                        </li>
+                                    </ul>
+                                    <p class="mb-0 text-muted h6 font-italic">"I love this platform"</p>
+                                </div>
+                            </div>
+                            <!--end col-->
+                        </div>
+                        <!--end row-->
+                    </div>
+                    <!-- Review End -->
+
+                    <!-- Review Start -->
+
+                </div>
+                <!-- Review End -->
+            </div>
+            <!--end owl-fade-->
+        </div>
+        <!--end col-->
+    </div>
+    <!--end row-->
+    </div>
+    <!--end container-->
+</section>
+
+<!--End Testimonial Section  -->
+
+<!-- Sign up Section Start -->
+<section class="overflow-hidden section mt-60 bg-soft-primary">
+    <div class="container">
+        <div class="p-4 roundedd bg-primary p-lg-5">
+            <div class="row align-items-end">
+                <div class="col-md-8">
+                    <div class="text-center section-title text-md-left">
+                        <h4 class="mb-3 text-white title title-dark">The Better Way to Trade &amp; Invest</h4>
+                        <p class="mb-0 text-white">Space Musk Investment helps over 2 million customers achieve their financial
+                            goals by helping them trade and invest with ease</p>
+                    </div>
+                </div>
+                <!--end col-->
+
+                <div class="mt-4 col-md-4 mt-sm-0">
+                    <div class="text-center text-md-right">
+                        <a href="/register" class="pt-3 pb-3 pl-4 pr-4 btn btn-light">Create
+                            Free
+                            Account</a>
+                    </div>
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+    </div>
+    <!--end container-->
+</section>
+<!-- End Sign up Section  -->

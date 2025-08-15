@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="bbtIXeZYVXQJjAzkb2EjYMVtNEpJfJPpwaHDPdlH">
+    <title>Tesla Stock Investment | User panel</title>
+    <link rel="icon"
+        href="/storage/app/public/photos/iHveSVpngimg.com - tesla_logo_PNG13.png1712641177"
+        type="image/png" />
+
+    <!-- Fonts and icons -->
+    <script src="/dash/js/plugin/webfont/webfont.min.js"></script>
+    <!-- Sweet Alert -->
+    <script src="/dash/js/plugin/sweetalert/sweetalert.min.js "></script>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/dash/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/dash/css/fonts.min.css">
+    <link rel="stylesheet" href="/dash/css/atlantis.min.css">
+    <link rel="stylesheet" href="/dash/css/customs.css">
+    <link rel="stylesheet" href="/dash/css/style.css">
+    <link rel="stylesheet" href="/dash/css/atlantis.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.datatables.net/v/bs4/dt-1.10.21/af-2.3.5/b-1.6.3/b-flash-1.6.3/b-html5-1.6.3/b-print-1.6.3/r-2.2.5/datatables.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+    <!-- Bootstrap Notify -->
+    <script src="/dash/js/plugin/bootstrap-notify/bootstrap-notify.min.js "></script>
+    <script src="/dash/js/plugin/sweetalert/sweetalert.min.js "></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js"></script>
+    <style>
+        [wire\:loading],
+        [wire\:loading\.delay],
+        [wire\:loading\.inline-block],
+        [wire\:loading\.inline],
+        [wire\:loading\.block],
+        [wire\:loading\.flex],
+        [wire\:loading\.table],
+        [wire\:loading\.grid] {
+            display: none;
+        }
+
+        [wire\:offline] {
+            display: none;
+        }
+
+        [wire\:dirty]:not(textarea):not(input):not(select) {
+            display: none;
+        }
+
+        input:-webkit-autofill,
+        select:-webkit-autofill,
+        textarea:-webkit-autofill {
+            animation-duration: 50000s;
+            animation-name: livewireautofill;
+        }
+
+        @keyframes livewireautofill {
+            from {}
+        }
+    </style>
+
+    <!--PayPal-->
+    <script>
+        // Add your client ID and secret
+        var PAYPAL_CLIENT = 'iidjdjdj';
+        var PAYPAL_SECRET = 'jijdjkdkdk';
+
+        // Point your server to the PayPal API
+        var PAYPAL_ORDER_API = 'https://api.paypal.com/v2/checkout/orders/';
+    </script>
+    <script src="https://www.paypal.com/sdk/js?client-id=iidjdjdj"></script>
+
+    <style>
+        /* Custom styles for dark theme */
+        body {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        .wrapper {
+            background-color: #121212;
+        }
+        .main-header, .logo-header, .navbar, .sidebar, .sidebar-wrapper {
+            background-color: #1e1e1e !important;
+            color: #e0e0e0;
+        }
+        .nav-link, .nav-item a, .sidebar-content a {
+            color: #b0b0b0;
+        }
+        .nav-link:hover, .nav-item a:hover, .sidebar-content a:hover {
+            color: #ffffff;
+            background-color: #2a2a2a;
+        }
+        .quick-actions, .dropdown-menu, .dropdown-user {
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+        }
+        .quick-actions-header, .user-box h4, .u-text h4 {
+            color: #ffffff;
+        }
+        .subtitle, .text-muted {
+            color: #a0a0a0 !important;
+        }
+        .btn-success, .btn-warning, .btn-danger {
+            background-color: #388e3c; /* Dark green instead of blue */
+            border-color: #388e3c;
+        }
+        .btn-success:hover, .btn-warning:hover {
+            background-color: #2e7d32;
+            border-color: #2e7d32;
+        }
+        .btn-danger:hover {
+            background-color: #d32f2f;
+            border-color: #d32f2f;
+        }
+        .badge-danger {
+            background-color: #d32f2f;
+        }
+        .badge-warning {
+            background-color: #f57c00;
+        }
+        .badge-success {
+            background-color: #388e3c;
+        }
+        .main-panel {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        .card {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            border: 1px solid #2a2a2a;
+        }
+        .card-title, .card-body h4, .card-body h5 {
+            color: #ffffff;
+        }
+        .table, .table td, .table th {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            border-color: #2a2a2a;
+        }
+        .table-hover tbody tr:hover {
+            background-color: #2a2a2a;
+        }
+    </style>
+
+</head>
+
+<body data-background-color="dark">
+    <div id="app">
+
+        <!--/PayPal-->
+        <!--End of Tawk.to Script-->
+        <div class="wrapper">
+            <div class="main-header">
+                <!-- Logo Header -->
+                <div class="logo-header" data-background-color="dark">
+                    <a href="/" class="logo" style="font-size: 27px; color:#fff;">
+                        SMI
+                    </a>
+                    <button class="ml-auto navbar-toggler sidenav-toggler" type="button" data-toggle="collapse"
+                        data-target="collapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon">
+                            <i class="icon-menu"></i>
+                        </span>
+                    </button>
+                    <button class="topbar-toggler more"><i class="icon-options-vertical"></i></button>
+                    <div class="nav-toggle">
+                        <button class="btn btn-toggle toggle-sidebar">
+                            <i class="icon-menu"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- End Logo Header -->
+
+                <!-- Navbar Header -->
+                <nav class="navbar navbar-header navbar-expand-lg" data-background-color="dark">
+
+                    <div class="container-fluid">
+                        <div class="text-center d-md-block d-none">
+                            <a href="/dashboard/deposits"
+                                class="pricing-action btn btn-warning btn-sm">Fund your Account</a> &nbsp;
+                            <a href="/dashboard/withdrawals"
+                                class="pricing-action btn btn-danger btn-sm">Withdraw Funds</a>
+                        </div>
+                        <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
+
+                            <li class="nav-item hidden-caret">
+                                <form action="javascript:void(0)" method="post" id="styleform" class="form-inline">
+
+                                    <div class="form-group">
+                                        <label class="style_switch">
+                                            <input name="style" id="style" type="checkbox" value="true" class="modes">
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </div>
+                                    <script>document.getElementById("style").checked = true;</script>
+                                    <input type="hidden" name="_token" value="bbtIXeZYVXQJjAzkb2EjYMVtNEpJfJPpwaHDPdlH">
+                                </form>
+                            </li>
+                            <li class="nav-item hidden-caret">
+                                <div id="google_translate_element"></div>
+                            </li>
+
+                            <li class="nav-item dropdown hidden-caret">
+                                <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+                                    <i class="fas fa-layer-group"></i><strong style="font-size:8px;">KYC</strong>
+                                </a>
+                                <div class="dropdown-menu quick-actions quick-actions-info animated fadeIn">
+                                    <div class="quick-actions-header">
+                                        <span class="mb-1 title">KYC verification</span>
+                                        <span class="subtitle op-8"><a>KYC status: <%= user.status %> </a></span>
+                                    </div>
+                                    <div class="quick-actions-scroll scrollbar-outer">
+                                        <div class="quick-actions-items">
+                                            <div class="m-0 row">
+                                                <a href="/dashboard/verify-account"
+                                                    class="btn btn-success">Verify Account </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown hidden-caret">
+                                <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
+                                    <i class="fas fa-user"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-user animated fadeIn">
+                                    <div class="dropdown-user-scroll scrollbar-outer">
+                                        <li>
+                                            <div class="user-box">
+
+                                                <div class="u-text">
+                                                    <h4><%= user.fullname %></h4>
+                                                    <p class="text-muted"><%= user.email %></p><a
+                                                        href="#"
+                                                        class="btn btn-xs btn-secondary btn-sm">Account Settings</a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item"
+                                                href="/dashboard/deposits">Deposit</a>
+                                            <a class="dropdown-item"
+                                                href="/dashboard/withdrawals">Withdraw</a>
+                                            <a class="dropdown-item"
+                                                href="/dashboard/buy-plan">Buy Plan</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="/logout">
+                                                Logout
+                                            </a>
+                                        </li>
+                                    </div>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <!-- End Navbar -->
+            </div>
+            <script type="text/javascript">
+                //create investment
+                $("#styleform").on('change', function () {
+                    $.ajax({
+                        url: "/dashboard/changetheme",
+                        type: 'POST',
+                        data: $("#styleform").serialize(),
+                        success: function (data) {
+                            location.reload(true);
+                        },
+                        error: function (data) {
+                            console.log(data);
+                        },
+
+                    });
+                });
+
+            </script> <!-- Stored in resources/views/child.blade.php -->
+
+            <!-- Sidebar -->
+
+            <div class="sidebar sidebar-style-2" data-background-color="dark">
+                <div class="sidebar-wrapper scrollbar scrollbar-inner">
+                    <div class="sidebar-content">
+                        <div class="user">
+                            <div class="info">
+                                <a data-toggle="collapse" href="#collapseExample" aria-expanded="true">
+                                    <span>
+                                        <%= user.fullname %>
+
+                                        <span class="caret"></span>
+                                    </span>
+                                </a>
+                                <div class="clearfix"></div>
+                                <div class="collapse in" id="collapseExample">
+                                    <ul class="nav">
+                                        <li>
+                                            <a href="/dashboard/account-settings">
+                                                <span class="link-collapse">Account Settings</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="nav nav-primary side-nav">
+                            <li class="nav-item">
+                                <a href="/dashboard">
+                                    <i class="fas fa-home"></i>
+                                    <p>Dashboard</p>
+                                </a>
+                            </li>
+                            <li class="nav-item d-md-none  ">
+                                <a href="/dashboard/deposits">
+                                    <i class="fa fa-download " aria-hidden="true"></i>
+                                    <p>Fund your Account</p>
+                                </a>
+                            </li>
+                            <li class="nav-item d-md-none  ">
+                                <a href="/dashboard/withdrawals">
+                                    <i class="fa fa-arrow-alt-circle-up " aria-hidden="true"></i>
+                                    <p>Withdraw Funds</p>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a href="/dashboard/tradinghistory">
+                                    <i class="fa fa-signal " aria-hidden="true"></i>
+                                    <p>Profit Record</p>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a href="/dashboard/accounthistory">
+                                    <i class="fa fa-briefcase " aria-hidden="true"></i>
+                                    <p>Transactions history</p>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a href="/dashboard/asset-balance">
+                                    <i class="fa fa-coins" aria-hidden="true"></i>
+                                    <p>Crypto Exchange</p>
+                                </a>
+                            </li>
+
+                            <li class="nav-item  ">
+                                <a data-toggle="collapse" href="#mpack">
+                                    <i class="fas fa-cubes"></i>
+                                    <p>Invest</p>
+                                    <span class="caret"></span>
+                                </a>
+                                <div class="collapse" id="mpack">
+                                    <ul class="nav nav-collapse">
+                                        <li>
+                                            <a href="/dashboard/buy-plan">
+                                                <span class="sub-item">Subscribe to a Plan</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span class="sub-item">My Investment</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item ">
+                                <a href="/dashboard/referuser">
+                                    <i class="fa fa-recycle " aria-hidden="true"></i>
+                                    <p>Refer Users</p>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a href="/dashboard/support">
+                                    <i class="fa fa-life-ring" aria-hidden="true"></i>
+                                    <p>Help/Support</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/dashboard/verify-account" class="nav-link">
+                                    <i class="fas fa-id-card nav-icon"></i>
+                                    <p>Verify Account
+                                        <% if(user.status === 'unverified') { %>
+                                            <span class="badge badge-danger right">Required</span>
+                                        <% } else if(user.status === 'pending') { %>
+                                            <span class="badge badge-warning right">Pending</span>
+                                        <% } else if(user.kycVerified || user.status === 'verified') { %>
+                                            <span class="badge badge-success right">Verified</span>
+                                        <% } %>
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <%- body %>
+
+        </div>
+    </div>
+
+    <script src="//code.jivosite.com/widget/5a83w5cQ6D" async></script>
+
+    <script>
+        // add active class to current page
+        $(document).ready(function () {
+            var pathname = window.location.pathname;
+            $('.nav-item').removeClass('active');
+            $('.nav-item a').each(function () {
+                if ($(this).attr('href') === pathname) {
+                    $(this).parent().addClass('active');
+                }
+            });
+        });
+    </script>
+
+    <!--   Core JS Files   -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="/dash/js/core/popper.min.js"></script>
+    <script src="/dash/js/core/bootstrap.min.js "></script>
+    <script src="/dash/js/customs.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="/dash/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script
+        src="/dash/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- jQuery Scrollbar -->
+    <script src="/dash/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js "></script>
+
+    <!-- jQuery Sparkline -->
+    <script src="/dash/js/plugin/jquery.sparkline/jquery.sparkline.min.js "></script>
+
+    <!-- Sweet Alert -->
+    <script src="/dash/js/plugin/sweetalert/sweetalert.min.js "></script>
+    <!-- Bootstrap Notify -->
+    <script src="/dash/js/plugin/bootstrap-notify/bootstrap-notify.min.js "></script>
+
+    <script type="text/javascript"
+        src="https://cdn.datatables.net/v/bs4/dt-1.10.21/af-2.3.5/b-1.6.3/b-flash-1.6.3/b-html5-1.6.3/b-print-1.6.3/r-2.2.5/datatables.min.js"></script>
+
+    <script src="/dash/js/atlantis.min.js"></script>
+    <script src="/dash/js/atlantis.js"></script>
+
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+        }
+    </script>
+
+    <script type="text/javascript">
+        var badWords = [
+            '<!--Start of Tawk.to Script-->',
+            '<script type="text/javascript">',
+            '<!--End of Tawk.to Script-->'
+        ];
+        $(':input').on('blur', function () {
+            var value = $(this).val();
+            $.each(badWords, function (idx, word) {
+                value = value.replace(word, '');
+            });
+            $(this).val(value);
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#ShipTable').DataTable({
+                order: [[0, 'desc']],
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'print', 'excel', 'pdf'
+                ]
+            });
+
+
+            $(".dataTables_length select").addClass("bg-dark text-light");
+            $(".dataTables_filter input").addClass("bg-dark text-light");
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.UserTable').DataTable({
+                order: [[0, 'desc']]
+            });
+            $(".dataTables_length select").addClass("bg-dark text-light");
+            $(".dataTables_filter input").addClass("bg-dark text-light");
+        });
+    </script>
+    <script src="/livewire/livewire.js?id=25f025805c3c370f7e87" data-turbo-eval="false"
+        data-turbolinks-eval="false"></script>
+    <script data-turbo-eval="false"
+        data-turbolinks-eval="false">window.livewire = new Livewire(); window.Livewire = window.livewire; window.livewire_app_url = ''; window.livewire_token = 'bbtIXeZYVXQJjAzkb2EjYMVtNEpJfJPpwaHDPdlH'; window.deferLoadingAlpine = function (callback) { window.addEventListener('livewire:load', function () { callback(); }); }; document.addEventListener("DOMContentLoaded", function () { window.livewire.start(); });</script>
+
+</body>
+
+</html>
